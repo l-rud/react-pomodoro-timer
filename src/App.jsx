@@ -8,7 +8,9 @@ function App() {
   return (
     <>
        <div className="App">
+      <section className="App-section">
         <PomodoroTimer />
+      </section>
     </div>
     </>
   )

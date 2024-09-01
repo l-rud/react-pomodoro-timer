@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Timer.css';
 
 // Defining functional React component PomodoroTimer:
 const PomodoroTimer = () => {

@@ -1,0 +1,21 @@
+.timer {
+  text-align: center;
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.timer-display {
+  font-size: 3rem;
+  margin: 20px 0;
+}
+
+.timer-controls button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.timer-controls button:hover {
+  transform: scale(1.05);
+}
