@@ -7,7 +7,7 @@ const PomodoroTimer = () => {
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false); // State variable isActive determine if the timer is currently running. Initialized to false.
     const [isPaused, setIsPaused] = useState(true);
-    
+
     // Defining a useEffect hook to run the effect (timer logic) whenever isActive, isPaused, minutes, or seconds changes.
     useEffect(() => {
         let interval = null;
@@ -40,8 +40,12 @@ const PomodoroTimer = () => {
         setIsPaused(false);
     };
 
-    const pauseTimer = () => {
-        setIsPaused(true);
+    const togglePauseResume = () => {
+        if (isPaused) {
+            setIsPaused(false);
+        } else {
+            setIsPaused(true);
+        }
     };
 
     const resetTimer = () => {
@@ -61,7 +65,9 @@ const PomodoroTimer = () => {
                 {!isActive && isPaused ? (
                     <button onClick={startTimer}>Start</button>
                 ) : (
-                    <button onClick={pauseTimer}>Pause</button>
+                    <button onClick={togglePauseResume}>
+                        {isPaused ? 'Resume' : 'Pause'}
+                    </button>
                 )}
                 <button onClick={resetTimer}>Reset</button>
             </div>
