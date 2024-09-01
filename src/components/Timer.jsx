@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Timer.css';
+import SoundAlert from './SoundAlert';
 
 // Defining functional React component PomodoroTimer:
 const PomodoroTimer = () => {
-    const [minutes, setMinutes] = useState(25); // State variable minutes with an initial value of 25. Function setMinutes is used to update this state.
+    const [minutes, setMinutes] = useState(1); // State variable minutes with an initial value of 25. Function setMinutes is used to update this state.
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false); // State variable isActive determine if the timer is currently running. Initialized to false.
     const [isPaused, setIsPaused] = useState(true);
+    const [playSound, setPlaySound] = useState(false); // // State to control sound alert
 
     // Defining a useEffect hook to run the effect (timer logic) whenever isActive, isPaused, minutes, or seconds changes.
     useEffect(() => {
@@ -18,8 +20,9 @@ const PomodoroTimer = () => {
                     if (minutes === 0) {
                         clearInterval(interval);
                         setIsActive(false);
-                        setMinutes(25);
+                        setMinutes(1);
                         setSeconds(0);
+                        setPlaySound(true); // Trigger sound alert
                         alert('Pomodoro work session ended!');
                     } else {
                         setMinutes(minutes - 1);
@@ -51,8 +54,9 @@ const PomodoroTimer = () => {
     const resetTimer = () => {
         setIsActive(false);
         setIsPaused(true);
-        setMinutes(25);
+        setMinutes(1);
         setSeconds(0);
+        setPlaySound(false); // Reset sound alert
     };
 
     return (
@@ -71,6 +75,7 @@ const PomodoroTimer = () => {
                 )}
                 <button onClick={resetTimer}>Reset</button>
             </div>
+            <SoundAlert play={playSound}/>
         </div>
     );
 };
