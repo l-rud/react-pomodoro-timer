@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import './Timer.css';
 import SoundAlert from './SoundAlert';
 
-// Defining functional React component PomodoroTimer:
-const PomodoroTimer = () => {
-    const [minutes, setMinutes] = useState(25); // State variable minutes with an initial value of 25. Function setMinutes is used to update this state.
+// Defining functional React component LongBreak:
+const LongBreak = () => {
+    const [minutes, setMinutes] = useState(15); // State variable minutes with an initial value of 25. Function setMinutes is used to update this state.
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false); // State variable isActive determine if the timer is currently running. Initialized to false.
     const [isPaused, setIsPaused] = useState(true);
@@ -20,10 +20,10 @@ const PomodoroTimer = () => {
                     if (minutes === 0) {
                         clearInterval(interval);
                         setIsActive(false);
-                        setMinutes(25);
+                        setMinutes(15);
                         setSeconds(0);
                         setPlaySound(true); // Trigger sound alert
-                        alert('Pomodoro work session ended!');
+                        alert('Long break ended!');
                     } else {
                         setMinutes(minutes - 1);
                         setSeconds(59);
@@ -54,14 +54,14 @@ const PomodoroTimer = () => {
     const resetTimer = () => {
         setIsActive(false);
         setIsPaused(true);
-        setMinutes(25);
+        setMinutes(15);
         setSeconds(0);
         setPlaySound(false); // Reset sound alert
     };
 
     return (
         <div className="timer">
-            <h1>Pomodoro work session</h1>
+            <h1>Long break</h1>
             <div className="timer-display">
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </div>
@@ -80,4 +80,4 @@ const PomodoroTimer = () => {
     );
 };
 
-export default PomodoroTimer;
+export default LongBreak;
